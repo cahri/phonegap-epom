@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    id="com.cahri.phonegap.epom"
+    version="1.0.0">
+
+	<engines>
+	    <engine name="cordova" version=">=3.0.0" />
+	</engines>
+
+	<name>Epom ads</name>
+	<description>This is a phonegap plugin (3.x) for the epom adserver iOS and Android SDKs.</description>
+	<author>Cahri SARL</author>
+	<keywords>epom, ad server</keywords>
+	<license>Apache 2.0 License</license>
+
+
+
+	<!-- <asset src="www/EpomAdsPlugin.js" target="js/EpomAdsPlugin.js" /> -->
+
+	<platform name="ios">
+        <config-file target="config.xml" parent="/*">
+       	    <feature name="Epom">
+        		<param name="ios-package" value="EpomAdsPlugin"/>
+    		</feature>
+        </config-file>
+
+		<js-module src="www/EpomAdsPlugin.js" name="Epom">
+	    	<!-- <clobbers target="epom" /> -->
+		</js-module>
+
+    	<header-file src="src/ios/EpomAdsPlugin.h" />
+    	<source-file src="src/ios/EpomAdsPlugin.m" compiler-flags="-fno-objc-arc"/>
+    	<header-file src="src/ios/include/ESBannerView.h" />
+    	<header-file src="src/ios/include/ESBannerViewDelegate.h" />
+    	<header-file src="src/ios/include/ESEnumerations.h" />
+    	<header-file src="src/ios/include/ESInterstitialView.h" />
+    	<header-file src="src/ios/include/ESInterstitialViewDelegate.h" />
+    	<header-file src="src/ios/include/ESUtils.h" />
+    	<header-file src="src/ios/include/ESVersion.h" />
+		<source-file src="src/ios/lib/libepom.a" framework="true" compiler-flags="-fno-objc-arc"/>
+
+		<framework src="AdSupport.framework" />
+		<framework src="AudioToolbox.framework" />
+		<framework src="AVFoundation.framework" />
+		<framework src="CFNetwork.framework" />
+		<framework src="CoreFoundation.framework" />
+		<framework src="CoreGraphics.framework" />
+		<framework src="CoreLocation.framework" />
+		<framework src="CoreMotion.framework" weak="true"/>
+		<framework src="CoreTelephony.framework" weak="true"/>
+		<framework src="EventKit.framework" weak="true"/>
+		<framework src="iAd.framework" weak="true"/>
+		<framework src="MediaPlayer.framework" weak="true"/>
+		<framework src="MessageUI.framework" weak="true"/>
+		<framework src="MobileCoreServices.framework" />
+		<framework src="QuartzCore.framework" />
+		<framework src="MobileCoreServices.framework" />
+		<framework src="PassKit.framework" />
+		<framework src="Security.framework" />
+		<framework src="StoreKit.framework" />
+		<framework src="SystemConfiguration.framework" />
+		<framework src="UIKit.framework" weak="true"/>
+		<framework src="libsqlite3.dylib" />
+		<framework src="libz.dylib" />
+		<framework src="libxml2.dylib" />
+
+	</platform>
+
+</plugin>
