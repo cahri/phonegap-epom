@@ -107,7 +107,7 @@
         {
             [subview setHidden:YES];
             [subview removeFromSuperview];
-            // subview = nil;
+            subview = nil;
         }
     }
     
