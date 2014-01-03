@@ -26,7 +26,7 @@
     
     NSString* key = [command.arguments objectAtIndex:0];
     
-    [ESUtils setLogLevel:ESVerboseAll];
+    // [ESUtils setLogLevel:ESVerboseAll];
     
     self.interView = [[ESInterstitialView alloc] initWithID:key
                                                 useLocation:NO testMode:NO];
@@ -61,12 +61,15 @@
     NSString *callbackId = command.callbackId;
 
     NSString* key = [command.arguments objectAtIndex:0];
-    
+    NSString* interval = [command.arguments objectAtIndex:1];
+    NSString* top = [command.arguments objectAtIndex:2];
+
     self.bannerView = [[[ESBannerView alloc] initWithID:key sizeType:ESBannerViewSize320x50
                                     modalViewController:self.viewController useLocation:NO
                                                testMode:NO] autorelease];
     
-    self.bannerView.refreshTimeInterval = 30.0; // TODO extract this
+    self.bannerView.refreshTimeInterval = [interval floatValue];
+    [self.bannerView setFrame:CGRectMake(0, [top intValue], 320, 50)];
     self.bannerView.delegate = self;
     
     [self.viewController.view addSubview:self.bannerView];
@@ -80,6 +83,13 @@
 - (void) esBannerViewWillShowAd:(ESBannerView *)esBannerView
 {
     [super writeJavascript:@"window.plugins.epomAds._willShowAd();"];
+}
+
+#pragma mark DestroyBanner
+- (void) destroyBanner:(CDVInvokedUrlCommand *)command {
+    [self.bannerView setHidden:YES];
+    [self.bannerView removeFromSuperview];
+    self.bannerView = nil;
 }
 
 @end

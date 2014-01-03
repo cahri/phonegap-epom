@@ -11,9 +11,17 @@ if (typeof cordova !== "undefined") {
         cordova.exec(null, null, "Epom", "createInterstitial", [key]);
     };
     
-    EpomAds.prototype.createBanner = function(key, cb) {
+    EpomAds.prototype.createBanner = function(key, cb, interval, top) {
         this._callback = cb;
-        cordova.exec(null, null, "Epom", "createBanner", [key]);
+
+        interval = typeof interval !== 'undefined' ? interval : 0;
+        top      = typeof top      !== 'undefined' ? top : 0;
+
+        cordova.exec(null, null, "Epom", "createBanner", [key, interval, top]);
+    };
+    
+    EpomAds.prototype.destroyBanner = function() {
+        cordova.exec(null, null, "Epom", "destroyBanner", []);
     };
     
     EpomAds.prototype._willShowAd = function () {
