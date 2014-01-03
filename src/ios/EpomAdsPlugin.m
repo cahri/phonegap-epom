@@ -101,9 +101,17 @@
 
 #pragma mark DestroyBanner
 - (void) destroyBanner:(CDVInvokedUrlCommand *)command {
-    [self.bannerView setHidden:YES];
-    [self.bannerView removeFromSuperview];
-    self.bannerView = nil;
+    for (UIView* subview in self.viewController.view.subviews)
+    {
+        if ([subview isKindOfClass:[ESBannerView class]])
+        {
+            [subview setHidden:YES];
+            [subview removeFromSuperview];
+            // subview = nil;
+        }
+    }
+    
 }
+
 
 @end
