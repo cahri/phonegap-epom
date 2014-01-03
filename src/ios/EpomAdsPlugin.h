@@ -22,4 +22,6 @@
 - (void)createInterstitial:(CDVInvokedUrlCommand *)command;
 - (void) destroyBanner:(CDVInvokedUrlCommand *)command;
 
+- (void) hideIntersitial;
+
 @end

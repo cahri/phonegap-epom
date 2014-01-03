@@ -47,6 +47,20 @@
 -(void)esInterstitialViewDidLoadAd:(ESInterstitialView *)esInterstitial {
     // present esInterstitial with current view controller
     [self.interView presentWithViewController:self.viewController];
+    
+    // fix cross overlaping statusbar
+    for (UIView* subview in self.viewController.presentedViewController.view.subviews)
+    {
+        if ([subview isKindOfClass:[UIButton class]])
+        {
+            [subview setFrame:CGRectMake(subview.frame.origin.x, subview.frame.origin.y+15, subview.frame.size.width , subview.frame.size.height)];
+        }
+    }
+    [self performSelector:@selector(hideIntersitial) withObject:Nil afterDelay:5];
+}
+
+-(void) hideIntersitial {
+    [self.viewController dismissViewControllerAnimated:YES completion:^{}];
 }
 
 -(void)esInterstitialViewDidLeaveModalMode:(ESInterstitialView *)esInterstitial {
