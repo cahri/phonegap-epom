@@ -20,6 +20,11 @@
         	<param name="android-package" value="com.cahri.phonegap.epom"/>
       	</feature>
         </config-file>
+
+		<js-module src="www/EpomAdsPlugin.js" name="Epom">
+	    	<clobbers target="epom" />
+		</js-module>
+
         <source-file src="src/android/EpomAdsPlugin.java"
                 target-dir="src/com/cahri/phonegap/epom" />
     </platform>
