@@ -78,9 +78,9 @@
     NSString* interval = [command.arguments objectAtIndex:1];
     NSString* top = [command.arguments objectAtIndex:2];
 
-    self.bannerView = [[[ESBannerView alloc] initWithID:key sizeType:ESBannerViewSize320x50
+    self.bannerView = [[ESBannerView alloc] initWithID:key sizeType:ESBannerViewSize320x50
                                     modalViewController:self.viewController useLocation:NO
-                                               testMode:NO] autorelease];
+                                               testMode:NO];
     
     self.bannerView.refreshTimeInterval = [interval floatValue];
     [self.bannerView setFrame:CGRectMake(0, [top intValue], 320, 50)];
