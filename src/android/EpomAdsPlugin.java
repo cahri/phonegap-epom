@@ -8,5 +8,6 @@ public class EpomAdsPlugin extends CordovaPlugin {
         @Override
         public boolean execute(String action, JSONArray args, CallbackContext callback) {
         	// TODO
+        	return false;
         }
 }
