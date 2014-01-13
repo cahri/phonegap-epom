@@ -14,9 +14,15 @@
 	<keywords>epom, ad server</keywords>
 	<license>Apache 2.0 License</license>
 
-
-
-	<!-- <asset src="www/EpomAdsPlugin.js" target="js/EpomAdsPlugin.js" /> -->
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+      	<feature name="EpomAdsPlugin" >
+        	<param name="android-package" value="com.cahri.phonegap.epom"/>
+      	</feature>
+        </config-file>
+        <source-file src="src/android/EpomAdsPlugin.java"
+                target-dir="src/com/cahri/phonegap/epom" />
+    </platform>
 
 	<platform name="ios">
         <config-file target="config.xml" parent="/*">
