@@ -40,6 +40,7 @@
 
 #pragma mark ESInterstitialViewDelegate
 -(void)esInterstitialViewDidFailLoadAd:(ESInterstitialView *)esInterstitial {
+    [super writeJavascript:@"window.plugins.epomAds._didFailInter();"];
     // just release object
     [self.interView release];
 }
@@ -47,6 +48,8 @@
 -(void)esInterstitialViewDidLoadAd:(ESInterstitialView *)esInterstitial {
     // present esInterstitial with current view controller
     [self.interView presentWithViewController:self.viewController];
+
+    [super writeJavascript:@"window.plugins.epomAds._willShowInter();"];
     
     // fix cross overlaping statusbar
     for (UIView* subview in self.viewController.presentedViewController.view.subviews)
@@ -64,6 +67,7 @@
 }
 
 -(void)esInterstitialViewDidLeaveModalMode:(ESInterstitialView *)esInterstitial {
+    [super writeJavascript:@"window.plugins.epomAds._didLeaveInter();"];
     // Interstitial is done. Release it
     [self.interView release];
 }
