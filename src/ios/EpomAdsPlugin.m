@@ -46,6 +46,7 @@
 }
 
 -(void)esInterstitialViewDidLoadAd:(ESInterstitialView *)esInterstitial {
+    NSLog(@"esInterstitialViewDidLoadAd");
     // present esInterstitial with current view controller
     [self.interView presentWithViewController:self.viewController];
 
@@ -58,8 +59,12 @@
         {
             [subview setFrame:CGRectMake(subview.frame.origin.x, subview.frame.origin.y+15, subview.frame.size.width , subview.frame.size.height)];
         }
+        else
+        {
+            NSLog(@"class: %@", [subview class]);
+        }
     }
-    [self performSelector:@selector(hideIntersitial) withObject:Nil afterDelay:5];
+    // [self performSelector:@selector(hideIntersitial) withObject:Nil afterDelay:5];
 }
 
 -(void) hideIntersitial {
